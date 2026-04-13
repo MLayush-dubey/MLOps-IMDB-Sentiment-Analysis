@@ -2,6 +2,7 @@
 __pycache__/
 *.py[codz]
 *$py.class
+projectflow.txt
 
 # C extensions
 *.so
