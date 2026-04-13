@@ -1,5 +1,6 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+cred.txt
 *.py[codz]
 *$py.class
 projectflow.txt
@@ -206,3 +207,4 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+setup_ssh.ps1
