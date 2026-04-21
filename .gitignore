@@ -7,7 +7,7 @@ projectflow.txt
 local_s3
 # C extensions
 *.so
-
+models/
 # Distribution / packaging
 .Python
 build/
