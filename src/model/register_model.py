@@ -46,7 +46,7 @@ def load_model_info(file_path: str) -> dict:
         raise
 
 
-def register_model(model_info: dict):
+def register_model(model_name: str, model_info: dict):
     """Register the model to the MLFlow Model Registry"""
     try:
         model_uri = f"runs:/{model_info['run_id']}/{model_info['model_path']}"

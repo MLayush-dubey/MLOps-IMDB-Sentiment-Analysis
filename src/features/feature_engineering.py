@@ -62,7 +62,7 @@ def apply_bow(train_data: pd.DataFrame, test_data: pd.DataFrame, max_features: i
         test_df = pd.DataFrame(X_test_bow.toarray())
         test_df['label'] = y_test 
 
-        return train_df, test_df 
+        return train_df, test_df, vectorizer
     except Exception as e:
         logging.error("Error during bag of words transformation: %s", e)
         raise 
@@ -79,6 +79,18 @@ def save_data(df: pd.DataFrame, file_path: str) -> None:
         raise
 
 
+def save_vectorizer(vectorizer, file_path: str) -> None:
+    """Save vectorizer to a pickle file"""
+    try:
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+        with open(file_path, 'wb') as f:
+            pickle.dump(vectorizer, f)
+        logging.info("Vectorizer saved to: %s", file_path)
+    except Exception as e:
+        logging.error("Error while saving vectorizer: %s", e)
+        raise
+
+
 def main():
     try:
         params = load_params('params.yaml')
@@ -88,10 +100,11 @@ def main():
         train_data = load_data("C:/Users/PC/Documents/MLOps-IMDB-Sentiment-Analysis/data/interim/train_processed.csv")
         test_data = load_data("C:/Users/PC/Documents/MLOps-IMDB-Sentiment-Analysis/data/interim/test_processed.csv")
 
-        train_df, test_df = apply_bow(train_data, test_data, max_features)
+        train_df, test_df, vectorizer = apply_bow(train_data, test_data, max_features)
         
         save_data(train_df, os.path.join("./data", "processed", "train_bow.csv"))
         save_data(test_df, os.path.join("./data", "processed", "test_bow.csv"))
+        save_vectorizer(vectorizer, "./models/vectorizer.pkl")
     except Exception as e:
         logging.error("Error in main function of feature engineering: %s", e)
         print(f"Error: {e}")

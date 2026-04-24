@@ -1,4 +1,4 @@
-data-ingestion:
+data_ingestion:
   test_size: 0.2
 
 feature_engineering:
