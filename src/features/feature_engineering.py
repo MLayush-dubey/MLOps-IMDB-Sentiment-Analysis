@@ -97,8 +97,8 @@ def main():
         max_features = params['feature_engineering']['max_features']   #params.yaml meh se ye fetch krne bola hai max features
         #max_features = 20  
 
-        train_data = load_data("C:/Users/PC/Documents/MLOps-IMDB-Sentiment-Analysis/data/interim/train_processed.csv")
-        test_data = load_data("C:/Users/PC/Documents/MLOps-IMDB-Sentiment-Analysis/data/interim/test_processed.csv")
+        train_data = load_data("C:/Users/dev/OneDrive/Documents/MLOps Project/MLOps-Sentiment Analysis/data/interim/train_processed.csv")
+        test_data = load_data("C:/Users/dev/OneDrive/Documents/MLOps Project/MLOps-Sentiment Analysis/data/interim/test_processed.csv")
 
         train_df, test_df, vectorizer = apply_bow(train_data, test_data, max_features)
         
