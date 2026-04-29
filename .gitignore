@@ -10,6 +10,7 @@ local_s3
 models/
 # Distribution / packaging
 .Python
+data/
 build/
 develop-eggs/
 dist/

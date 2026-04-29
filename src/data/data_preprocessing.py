@@ -69,8 +69,8 @@ def preprocess_dataframe(df: pd.DataFrame, col: str = 'text') -> pd.DataFrame:
 def main():
     try:
         #fetch data from data/raw
-        train_data = pd.read_csv("C:/Users/dev/OneDrive/Documents/MLOps Project/MLOps-Sentiment Analysis/data/raw/train.csv")
-        test_data = pd.read_csv("C:/Users/dev/OneDrive/Documents/MLOps Project/MLOps-Sentiment Analysis/data/raw/test.csv")
+        train_data = pd.read_csv("./data/raw/train.csv")
+        test_data = pd.read_csv("./data/raw/test.csv")
         logging.info("data loaded properly")
 
         #transform the data 
