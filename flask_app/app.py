@@ -10,10 +10,13 @@ from nltk.corpus import stopwords
 import string 
 import dagshub 
 import re 
+from dotenv import load_dotenv
 
 import warnings 
 warnings.filterwarnings("ignore", category=UserWarning)
 warnings.filterwarnings("ignore")
+
+load_dotenv()
 
 
 def lemmatization(text):
@@ -48,7 +51,7 @@ def removing_punctuations(text):
     """Remove punctuations from the text."""
     text = re.sub('[%s]' % re.escape(string.punctuation), ' ', text)
     text = text.replace('؛', "")
-    text = re.sub('\s+', ' ', text).strip()
+    text = re.sub(r'\s+', ' ', text).strip()
     return text
 
 
@@ -58,11 +61,11 @@ def removing_urls(text):
     return url_pattern.sub(r'', text)
 
 
-def remove_small_sentences(df):
+def remove_small_sentences(text):
     """Remove sentences with less than 3 words"""
-    for i in range(len(df)):
-        if len(df.text.iloc[i].split()) < 3:
-            df.text.iloc[i] = np.nan 
+    if len(str(text).split()) < 3:
+        return ""
+    return text
 
 
 def normalize_text(text):
@@ -164,7 +167,7 @@ def predict():
     features_df = pd.DataFrame(features.toarray(), columns = [str(i) for i in range(features.shape[1])])
 
     #make prediction 
-    result = model.predict(features_df[0])
+    result = model.predict(features_df)
     prediction = result[0]
 
     #Increment prediction counter 

@@ -18,11 +18,11 @@ def promote_model():
     repo_name = "MLOps-IMDB-Sentiment-Analysis"
 
     #Setup MLFLow tracking URI
-    mlflow.set_tracking_uri(f"{dagshub_url}/{repo_owner}/{repo_name}")
+    mlflow.set_tracking_uri(f"{dagshub_url}/{repo_owner}/{repo_name}.mlflow")
 
     client = mlflow.MLflowClient() 
 
-    model_name = "model"
+    model_name = "my_model"
 
     #Get the latest version in staging 
     latest_version_staging = client.get_latest_versions(model_name, stages = ["Staging"])[0].version 
