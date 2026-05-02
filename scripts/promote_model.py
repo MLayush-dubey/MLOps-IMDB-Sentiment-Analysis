@@ -20,7 +20,7 @@ def promote_model():
     #Setup MLFLow tracking URI
     mlflow.set_tracking_uri(f"{dagshub_url}/{repo_owner}/{repo_name}.mlflow")
 
-    client = mlflow.MLflowClient() 
+    client = mlflow.MlflowClient() 
 
     model_name = "my_model"
 
