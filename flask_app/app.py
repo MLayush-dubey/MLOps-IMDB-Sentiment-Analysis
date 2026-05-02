@@ -78,24 +78,24 @@ def normalize_text(text):
 
 
 #Below code block is for local use
-mlflow.set_tracking_uri('https://dagshub.com/MLayush-dubey/MLOps-IMDB-Sentiment-Analysis.mlflow')
-dagshub.init(repo_owner = "MLayush-dubey", repo_name = "MLOps-IMDB-Sentiment-Analysis")
+# mlflow.set_tracking_uri('https://dagshub.com/MLayush-dubey/MLOps-IMDB-Sentiment-Analysis.mlflow')
+# dagshub.init(repo_owner = "MLayush-dubey", repo_name = "MLOps-IMDB-Sentiment-Analysis")
 
 #-------------------------------------------------------------------------------------------------
 #Below code is for production use
-# dagshub_token = os.getenv("DAGSHUB_TOKEN")
-# if not dagshub_token: 
-#     raise EnvironmentError("DAGSHUB_TOKEN env variable not set")
+dagshub_token = os.getenv("DAGSHUB_TOKEN")
+if not dagshub_token: 
+    raise EnvironmentError("DAGSHUB_TOKEN env variable not set")
 
-# os.environ["MLFLOW_TRACKING_USERNAME"] = dagshub_token 
-# os.environ["MLFLOW_TRACKING_PASSWORD"] = dagshub_token 
+os.environ["MLFLOW_TRACKING_USERNAME"] = dagshub_token 
+os.environ["MLFLOW_TRACKING_PASSWORD"] = dagshub_token 
 
-# dagshub_url = "https://dagshub.com"
-# repo_owner = "MLayush-dubey"
-# repo_name = "MLOps-IMDB-Sentiment-Analysis" 
+dagshub_url = "https://dagshub.com"
+repo_owner = "MLayush-dubey"
+repo_name = "MLOps-IMDB-Sentiment-Analysis" 
 
-# #Setup MLFlow tracking URI 
-# mlflow.set_tracking_uri(f"{dagshub_url}/{repo_owner}/{repo_name}.mlflow")
+#Setup MLFlow tracking URI 
+mlflow.set_tracking_uri(f"{dagshub_url}/{repo_owner}/{repo_name}.mlflow")
 
 #-----------------------------------------------------------------------------------------------
 

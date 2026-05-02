@@ -11,25 +11,25 @@ warnings.filterwarnings("ignore")
 
 
 #Below code for production use 
-# dagshub_token = os.getenv("DAGSHUB_TOKEN")
-# if not dagshub_token:
-#     raise ValueError("DAGSHUB_TOKEN not found in environment variables")
+dagshub_token = os.getenv("DAGSHUB_TOKEN")
+if not dagshub_token:
+    raise ValueError("DAGSHUB_TOKEN not found in environment variables")
 
-# os.environ["MLFLOW_TRACKING_USERNAME"] = dagshub_token 
-# os.environ["MLFLOW_TRACKING_PASSWORD"] = dagshub_token 
+os.environ["MLFLOW_TRACKING_USERNAME"] = dagshub_token 
+os.environ["MLFLOW_TRACKING_PASSWORD"] = dagshub_token 
 
-# dagshub_url = "https://dagshub.com"
-# repo_owner = "MLayush-dubey"
-# repo_name = "MLOps-IMDB-Sentiment-Analysis"
+dagshub_url = "https://dagshub.com"
+repo_owner = "MLayush-dubey"
+repo_name = "MLOps-IMDB-Sentiment-Analysis"
 
-# #set up tracking URI 
-# mlflow.set_tracking_uri(f"{dagshub_url}/{repo_owner}/{repo_name}.mlflow")
+#set up tracking URI 
+mlflow.set_tracking_uri(f"{dagshub_url}/{repo_owner}/{repo_name}.mlflow")
 
 #---------------------------------------------------------------------------------------
 
 #Below for local
-mlflow.set_tracking_uri("https://dagshub.com/MLayush-dubey/MLOps-IMDB-Sentiment-Analysis.mlflow")
-dagshub.init(repo_owner="MLayush-dubey", repo_name="MLOps-IMDB-Sentiment-Analysis", mlflow=True)
+# mlflow.set_tracking_uri("https://dagshub.com/MLayush-dubey/MLOps-IMDB-Sentiment-Analysis.mlflow")
+# dagshub.init(repo_owner="MLayush-dubey", repo_name="MLOps-IMDB-Sentiment-Analysis", mlflow=True)
 
 
 def load_model_info(file_path: str) -> dict:
