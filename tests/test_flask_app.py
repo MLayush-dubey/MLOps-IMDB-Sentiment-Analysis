@@ -10,7 +10,7 @@ class FlaskAppTests(unittest.TestCase):
     def test_home_page(self):
         response = self.client.get("/")  #simulates user visiting the root URL
         self.assertEqual(response.status_code, 200)  
-        self.assertIn(b'<title>Sentiment Analysis</title>', response.data)  #Looks at the HTML response data to see if title is ...
+        self.assertIn(b"<title>IMDB Sentiment Analysis</title>", response.data)
 
     
     def test_predict_page(self):
