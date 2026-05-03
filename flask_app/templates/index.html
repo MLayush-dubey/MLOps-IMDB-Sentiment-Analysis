@@ -1,87 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sentiment Analysis</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            text-align: center;
-            padding: 20px;
-        }
-        .container {
-            max-width: 500px;
-            margin: auto;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            color: #333;
-        }
-        textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            resize: none;
-            font-size: 16px;
-        }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            margin-top: 10px;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        .result {
-            margin-top: 20px;
-            font-size: 22px;
-            font-weight: bold;
-            padding: 10px;
-            border-radius: 5px;
-        }
-        .positive {
-            color: #155724;
-            background-color: #d4edda;
-            border: 1px solid #c3e6cb;
-        }
-        .negative {
-            color: #721c24;
-            background-color: #f8d7da;
-            border: 1px solid #f5c6cb;
-        }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IMDB Sentiment Analysis</title>
+
+    <link rel="stylesheet" href='{{ url_for("static", filename="style.css") }}' />
 </head>
+
 <body>
+    <main class="page-wrapper">
 
-    <div class="container">
-        <h1>Sentiment Analysis</h1>
-        <form action="/predict" method="POST">
-            <label for="text">Write text:</label><br>
-            <textarea id="text" name="text" rows="5" placeholder="Enter your text here..."></textarea><br>
-            <button type="submit">Predict</button>
-        </form>
-
-        {% if result is not none %}
-            <div class="result {% if result == 1 %}positive{% else %}negative{% endif %}">
-                {% if result == 1 %}
-                    😊 Positive Sentiment
-                {% else %}
-                    😞 Negative Sentiment
-                {% endif %}
+        <section class="hero-section">
+            <div class="badge">
+                <span class="badge-dot"></span>
+                ML-powered sentiment classifier
             </div>
-        {% endif %}
-    </div>
 
+            <h1>
+                IMDB Review <br />
+                <span class="gradient-text">Sentiment Analysis</span>
+            </h1>
+
+            <p>
+                Analyze movie reviews using a machine learning model trained to classify
+                text as positive or negative. Built as an end-to-end MLOps project with
+                a clean, recruiter-friendly interface.
+            </p>
+
+            <div class="features">
+                <span class="feature-pill">NLP Project</span>
+                <span class="feature-pill">IMDB Dataset</span>
+                <span class="feature-pill">Flask App</span>
+                <span class="feature-pill">MLOps Ready</span>
+            </div>
+        </section>
+
+        <section class="card">
+            <div class="card-content">
+                <div class="card-header">
+                    <h2>Try the Model</h2>
+                    <p>
+                        Enter a movie review below and let the model predict whether the
+                        sentiment is positive or negative.
+                    </p>
+                </div>
+
+                <form action="/predict" method="POST">
+                    <label for="text">Movie Review</label>
+
+                    <textarea
+                        id="text"
+                        name="text"
+                        rows="6"
+                        placeholder="Example: The movie was beautifully directed, emotionally powerful, and the performances were outstanding..."
+                        required
+                    >{{ request.form.text if request.form.text else '' }}</textarea>
+
+                    <div class="button-row">
+                        <button type="submit">Analyze Sentiment</button>
+                    </div>
+
+                    <p class="hint">
+                        Tip: Try writing a detailed review for a more meaningful prediction.
+                    </p>
+                </form>
+
+                {% if result is not none %}
+                    <div class="result {% if result == 1 %}positive{% else %}negative{% endif %}">
+                        <div class="result-icon">
+                            {% if result == 1 %}
+                                😊
+                            {% else %}
+                                😞
+                            {% endif %}
+                        </div>
+
+                        <div class="result-text">
+                            {% if result == 1 %}
+                                <h3>Positive Sentiment Detected</h3>
+                                <p>
+                                    The model predicts that this review expresses a positive opinion.
+                                </p>
+                            {% else %}
+                                <h3>Negative Sentiment Detected</h3>
+                                <p>
+                                    The model predicts that this review expresses a negative opinion.
+                                </p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+
+                <div class="model-info">
+                    <div class="info-box">
+                        <strong>NLP</strong>
+                        <span>Text Processing</span>
+                    </div>
+
+                    <div class="info-box">
+                        <strong>IMDB</strong>
+                        <span>Movie Reviews</span>
+                    </div>
+
+                    <div class="info-box">
+                        <strong>ML</strong>
+                        <span>Prediction App</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
 </body>
 </html>

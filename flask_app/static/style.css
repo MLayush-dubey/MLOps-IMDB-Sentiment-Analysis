@@ -1,0 +1,341 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    background:
+        radial-gradient(circle at top left, rgba(99, 102, 241, 0.25), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.22), transparent 35%),
+        linear-gradient(135deg, #0f172a 0%, #111827 50%, #020617 100%);
+    color: #f8fafc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 16px;
+}
+
+.page-wrapper {
+    width: 100%;
+    max-width: 1080px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: center;
+}
+
+.hero-section {
+    padding: 20px;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(12px);
+    color: #cbd5e1;
+    font-size: 14px;
+    margin-bottom: 24px;
+}
+
+.badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 12px #22c55e;
+}
+
+.hero-section h1 {
+    font-size: clamp(36px, 6vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #38bdf8, #818cf8, #34d399);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero-section p {
+    max-width: 520px;
+    color: #cbd5e1;
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 28px;
+}
+
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.feature-pill {
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+    font-size: 14px;
+}
+
+.card {
+    position: relative;
+    background: rgba(15, 23, 42, 0.82);
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    box-shadow:
+        0 24px 80px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(18px);
+    border-radius: 28px;
+    padding: 32px;
+    overflow: hidden;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(56, 189, 248, 0.15),
+        transparent 35%,
+        rgba(52, 211, 153, 0.12)
+    );
+    pointer-events: none;
+}
+
+.card-content {
+    position: relative;
+    z-index: 1;
+}
+
+.card-header {
+    margin-bottom: 24px;
+}
+
+.card-header h2 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.card-header p {
+    color: #94a3b8;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+label {
+    display: block;
+    text-align: left;
+    color: #e2e8f0;
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+textarea {
+    width: 100%;
+    min-height: 170px;
+    padding: 16px;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    border-radius: 18px;
+    resize: vertical;
+    font-size: 16px;
+    font-family: inherit;
+    outline: none;
+    color: #f8fafc;
+    background: rgba(2, 6, 23, 0.7);
+    transition: all 0.25s ease;
+    line-height: 1.6;
+}
+
+textarea::placeholder {
+    color: #64748b;
+}
+
+textarea:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.15);
+}
+
+.button-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-top: 18px;
+}
+
+button {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    padding: 15px 22px;
+    border-radius: 16px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #020617;
+    background: linear-gradient(90deg, #38bdf8, #34d399);
+    box-shadow: 0 12px 30px rgba(34, 211, 238, 0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 40px rgba(34, 211, 238, 0.35);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.hint {
+    margin-top: 14px;
+    color: #94a3b8;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.result {
+    margin-top: 24px;
+    padding: 18px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-align: left;
+    animation: fadeIn 0.35s ease;
+}
+
+.result-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    font-size: 26px;
+    flex-shrink: 0;
+}
+
+.result-text h3 {
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+
+.result-text p {
+    font-size: 14px;
+    color: inherit;
+    opacity: 0.85;
+    line-height: 1.5;
+}
+
+.positive {
+    background: rgba(34, 197, 94, 0.14);
+    border: 1px solid rgba(34, 197, 94, 0.35);
+    color: #bbf7d0;
+}
+
+.positive .result-icon {
+    background: rgba(34, 197, 94, 0.2);
+}
+
+.negative {
+    background: rgba(239, 68, 68, 0.14);
+    border: 1px solid rgba(239, 68, 68, 0.35);
+    color: #fecaca;
+}
+
+.negative .result-icon {
+    background: rgba(239, 68, 68, 0.2);
+}
+
+.model-info {
+    margin-top: 22px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.info-box {
+    padding: 14px 10px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    text-align: center;
+}
+
+.info-box strong {
+    display: block;
+    font-size: 18px;
+    color: #f8fafc;
+    margin-bottom: 4px;
+}
+
+.info-box span {
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 900px) {
+    .page-wrapper {
+        grid-template-columns: 1fr;
+        max-width: 640px;
+    }
+
+    .hero-section {
+        text-align: center;
+        padding: 0;
+    }
+
+    .hero-section p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .features {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 520px) {
+    body {
+        padding: 20px 12px;
+    }
+
+    .card {
+        padding: 24px;
+        border-radius: 22px;
+    }
+
+    .model-info {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-section h1 {
+        letter-spacing: -1px;
+    }
+}

@@ -10,13 +10,11 @@ from nltk.corpus import stopwords
 import string 
 import dagshub 
 import re 
-from dotenv import load_dotenv
 
 import warnings 
 warnings.filterwarnings("ignore", category=UserWarning)
 warnings.filterwarnings("ignore")
 
-load_dotenv()
 
 
 def lemmatization(text):
@@ -85,7 +83,7 @@ def normalize_text(text):
 # dagshub.init(repo_owner = "MLayush-dubey", repo_name = "MLOps-IMDB-Sentiment-Analysis")
 
 #-------------------------------------------------------------------------------------------------
-#Below code is for production use
+# Below code is for production use
 dagshub_token = os.getenv("DAGSHUB_TOKEN")
 if not dagshub_token: 
     raise EnvironmentError("DAGSHUB_TOKEN env variable not set")
